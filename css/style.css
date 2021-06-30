@@ -3,9 +3,39 @@
     background: linear-gradient(0deg, #dadbd5 0 85%, #429488 85% 100%);
 }
 
+.mine {
+    background-color: #dcf8c0;
+    justify-content: flex-end;
+}
+
+.yours {
+    background-color: white;
+    justify-content: flex-start;
+}
+
+.icons {
+    color: #b1b1b1;
+    font-size: 24px;
+}
+
+.icons i {
+    padding-right: 12px;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.top-bar .avatar {
+    width: 55px;
+}
+
+.chat-list .avatar {
+    width: 70px;
+}
+
 .chat-container {
-    width: 80vw;
-    height: 95vh;
+    height: 95%;
 }
 
 .chat-container .row {
@@ -17,9 +47,9 @@
     background-color: #eaeaea;
 }
 
-/* .sidebar {
-
-} */
+.sidebar {
+    height: 100%;
+}
 
 .sidebar .top-bar {
     border-right: 1px solid lightgrey;
@@ -38,17 +68,18 @@
 .sidebar .chat-list {
     height: calc(100% - 190px);
     background-color: white;
+    overflow-y: scroll;
 }
 
-/* .chat-section {
-    
-} */
-
+.chat-section {
+    height: 100%;
+}
 
 .chat-section .message-area {
     height: calc(100% - 140px);
     background-image: url('../img/mine.jpg');
     background-repeat: repeat;
+    overflow-y: scroll;
 }
 
 .chat-section .input-section {
@@ -58,9 +89,4 @@
 
 ul {
     list-style: none;
-}
-
-.chat-container img {
-    width: 80px;
-    border-radius: 50%;
 }
