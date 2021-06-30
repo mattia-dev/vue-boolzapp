@@ -174,13 +174,16 @@ new Vue (
             ],
 
         },
+        created: function() {
+            updateScroll();
+        },
         methods: {
             selectAvatar: function(index) {
                 return `img/avatar${this.contacts[index].avatar}.jpg`;
             },
-            selectAlt: function (index) {
+            selectAlt: function(index) {
                 return `Avatar ${this.contacts[index].name}`;
-            }
+            },
         }
     }
 );
