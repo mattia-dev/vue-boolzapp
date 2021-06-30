@@ -1,6 +1,59 @@
-body {
+#app {
     height: 100vh;
     background: linear-gradient(0deg, #dadbd5 0 85%, #429488 85% 100%);
+}
+
+.chat-container {
+    width: 80vw;
+    height: 95vh;
+}
+
+.chat-container .row {
+    height: 100%;
+}
+
+.top-bar {
+    height: 70px;
+    background-color: #eaeaea;
+}
+
+/* .sidebar {
+
+} */
+
+.sidebar .top-bar {
+    border-right: 1px solid lightgrey;
+}
+
+.sidebar .notifications-bar {
+    height: 90px;
+    background-color: #9fd8f8;
+}
+
+.sidebar .search-area {
+    height: 30px;
+    background-color: #fafafa;
+}
+
+.sidebar .chat-list {
+    height: calc(100% - 190px);
+    background-color: white;
+}
+
+/* .chat-section {
+    
+} */
+
+
+.chat-section .message-area {
+    height: calc(100% - 140px);
+    background-image: url('../img/mine.jpg');
+    background-repeat: repeat;
+}
+
+.chat-section .input-section {
+    height: 70px;
+    background-color: #f2eeea;
 }
 
 ul {

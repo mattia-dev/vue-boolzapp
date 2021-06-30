@@ -11,15 +11,52 @@
     <title>Boolzapp</title>
 </head>
 <body>
-    <div id="app">
-        <div class="chat-container">
-            <ul>
-                <li v-for="(img, index) in contacts">
-                    <img :src="selectAvatar(index)" :alt="selectAlt(index)">
-                    
-                    <span>{{img.name}}</span>
-                </li>
-            </ul>
+    <div class="d-flex justify-content-center align-items-center" id="app">
+        <div class="container chat-container">
+            <div class="row">
+                <div class="col-4 sidebar">
+                    <div class="row">
+                        <div class="top-bar">
+
+                        </div>
+
+                        <div class="notifications-bar">
+
+                        </div>
+                        
+                        <div class="search-area">
+
+                        </div>
+                        
+                        <div class="chat-list">
+
+                            <ul>
+                                <li v-for="(img, index) in contacts">
+                                    <img :src="selectAvatar(index)" :alt="selectAlt(index)">
+                                    
+                                    <span>{{img.name}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-8 chat-section">
+                    <div class="row">
+                        <div class="top-bar">
+                            
+                        </div>
+                        
+                        <div class="message-area">
+                            
+                        </div>
+                        
+                        <div class="input-section">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
