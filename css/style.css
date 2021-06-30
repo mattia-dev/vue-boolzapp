@@ -1,6 +1,23 @@
-#app {
-    height: 100vh;
-    background: linear-gradient(0deg, #dadbd5 0 85%, #429488 85% 100%);
+h6 {
+    margin-bottom: 0;
+    color: black;
+}
+
+i {
+    font-size: 24px;
+}
+
+.top-bar i, .input-section i {
+    cursor: pointer;
+}
+
+.top-bar {
+    height: 70px;
+    background-color: #eaeaea;
+}
+
+.avatar {
+    border-radius: 50%;
 }
 
 .mine {
@@ -13,41 +30,16 @@
     justify-content: flex-start;
 }
 
-.icons {
-    color: #b1b1b1;
-    font-size: 24px;
-}
-
-.icons i {
-    padding-right: 12px;
-}
-
-.avatar {
-    border-radius: 50%;
-}
-
-.top-bar .avatar {
-    width: 55px;
-}
-
-.chat-list .avatar {
-    width: 70px;
+#app {
+    height: 100vh;
+    background: linear-gradient(0deg, #dadbd5 0 85%, #429488 85% 100%);
 }
 
 .chat-container {
     height: 95%;
 }
 
-.chat-container .row {
-    height: 100%;
-}
-
-.top-bar {
-    height: 70px;
-    background-color: #eaeaea;
-}
-
-.sidebar {
+.chat-container .row, .sidebar, .chat-section {
     height: 100%;
 }
 
@@ -55,38 +47,65 @@
     border-right: 1px solid lightgrey;
 }
 
-.sidebar .notifications-bar {
+.top-bar .avatar, .notifications-bar i {
+    margin-right: 12px;
+}
+
+.top-bar .avatar {
+    width: 55px;
+}
+
+.top-bar i {
+    color: #b1b1b1;
+    margin-right: 12px;
+}
+
+.notifications-bar {
     height: 90px;
     background-color: #9fd8f8;
 }
 
-.sidebar .search-area {
+.notifications-bar i {
+    color: #9fd8f8;
+    background-color: white;
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.notifications-info a, .contact-info div {
+    font-size: 14px;
+    font-weight: 500;
+    color: grey;
+}
+
+.search-area {
     height: 30px;
     background-color: #fafafa;
 }
 
-.sidebar .chat-list {
+.chat-list {
     height: calc(100% - 190px);
     background-color: white;
     overflow-y: scroll;
 }
 
-.chat-section {
-    height: 100%;
+.chat-list ul {
+    list-style: none;
+    padding-left: 0;
 }
 
-.chat-section .message-area {
+.chat-list .avatar {
+    width: 70px;
+}
+
+.message-area {
     height: calc(100% - 140px);
     background-image: url('../img/mine.jpg');
     background-repeat: repeat;
     overflow-y: scroll;
 }
 
-.chat-section .input-section {
+.input-section {
     height: 70px;
     background-color: #f2eeea;
-}
-
-ul {
-    list-style: none;
 }

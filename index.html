@@ -17,21 +17,29 @@
                 <div class="col-4 sidebar">
                     <div class="row">
                         <div class="top-bar d-flex justify-content-between align-items-center">
-                            <div class="user d-flex">
+                            <div class="d-flex align-items-center">
                                 <img class="avatar" src="./img/avatar_io.jpg" alt="my avatar">
                                 
-                                <span class="align-self-center">Mattia Ferrari</span>
+                                <h6>Mattia Ferrari</h6>
                             </div>
 
-                            <div class="icons">
+                            <div>
                                 <i class="fas fa-circle-notch"></i>
                                 <i class="fas fa-comment-alt"></i>
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                         </div>
 
-                        <div class="notifications-bar">
+                        <div class="notifications-bar d-flex align-items-center">
+                            <div>
+                                <i class="fas fa-bell-slash"></i>
+                            </div>
 
+                            <div class="notifications-info">
+                                <h6>Ricevi notifiche di nuovi messaggi</h6>
+
+                                <a href="#">Attiva notifiche desktop</a>
+                            </div>
                         </div>
                         
                         <div class="search-area">
@@ -39,7 +47,6 @@
                         </div>
                         
                         <div class="chat-list">
-
                             <ul>
                                 <li v-for="(img, index) in contacts">
                                     <img class="avatar" :src="selectAvatar(index)" :alt="selectAlt(index)">
@@ -54,18 +61,17 @@
                 <div class="col-8 chat-section">
                     <div class="row">
                         <div class="top-bar d-flex justify-content-between align-items-center">
-                            <div class="contact-info d-flex">
-
+                            <div class="d-flex align-items-center">
                                 <img class="avatar" src="./img/avatar_1.jpg" alt="">
                                 
-                                <div class="align-self-center">
-                                    <div>Michele</div>
+                                <div class="contact-info">
+                                    <h6>Michele</h6>
                                     
                                     <div>Ultimo accesso oggi alle</div>
                                 </div>
                             </div>
 
-                            <div class="icons">
+                            <div>
                                 <i class="fas fa-search"></i>
                                 <i class="fas fa-paperclip"></i>
                                 <i class="fas fa-ellipsis-v"></i>
