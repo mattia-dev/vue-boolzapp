@@ -42,16 +42,21 @@
                             </div>
                         </div>
                         
-                        <div class="search-area">
+                        <div class="search-area d-flex align-items-center">
+                            <div class="search-bar d-flex align-items-center">
+                                <i class="fas fa-search"></i>
+
+                                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                            </div>
 
                         </div>
                         
                         <div class="chat-list">
                             <ul>
-                                <li v-for="(img, index) in contacts">
+                                <li v-for="(img, index) in contacts" class="d-flex">
                                     <img class="avatar" :src="selectAvatar(index)" :alt="selectAlt(index)">
                                     
-                                    <span>{{img.name}}</span>
+                                    <h5>{{img.name}}</h5>
                                 </li>
                             </ul>
                         </div>
