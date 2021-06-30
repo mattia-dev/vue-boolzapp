@@ -1,3 +1,13 @@
+body {
+    height: 100vh;
+    background: linear-gradient(0deg, #dadbd5 0 85%, #429488 85% 100%);
+}
+
 ul {
     list-style: none;
+}
+
+.chat-container img {
+    width: 80px;
+    border-radius: 50%;
 }
