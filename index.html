@@ -12,7 +12,13 @@
 </head>
 <body>
     <div id="app">
+        <ul>
+            <li v-for="(img, index) in contacts">
+                <img :src="selectAvatar(index)" :alt="selectAlt(index)">
 
+                <span>{{img.name}}</span>
+            </li>
+        </ul>
     </div>
 
     <script src="./js/script.js"></script>
