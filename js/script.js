@@ -205,17 +205,30 @@ new Vue (
             contactSelection: function(index) {
                 this.selectedContact = index;
                 this.displayClass = "";
-                this.heightClass = "with-text"
+                this.heightClass = "with-text";
             },
             sendMessage: function() {
                 this.contacts[this.selectedContact].messages.push(
-                {
+                    {
                         date: '10/01/2020 15:50:00',
                         text: this.newText,
                         status: 'sent'
-                }
+                    }
                 );
+                setTimeout( () => 
+                    this.contacts[this.selectedContact].messages.push(
+                        {
+                            date: '10/01/2020 15:50:00',
+                            text: 'ok',
+                            status: 'received'
+                        }
+                    ),
+                1000);
+
                 this.newText = "";
+                
+                let textInputElement = document.querySelector('#text-input');
+                textInputElement.focus();
             },
         }
     }

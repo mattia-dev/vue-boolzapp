@@ -106,7 +106,7 @@
                                 <i class="far fa-smile"></i>
                             </div>
 
-                            <input v-model="newText" type="text" placeholder="Scrivi un messaggio">
+                            <input id="text-input" v-model="newText" type="text" placeholder="Scrivi un messaggio" @keyup.enter="sendMessage()">
                             
                             <div class="icon-container d-flex justify-content-center">
                                 <i v-if="newText === ''" class="fas fa-microphone"></i>
