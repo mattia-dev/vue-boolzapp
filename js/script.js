@@ -172,10 +172,8 @@ new Vue (
                     ],
                 },
             ],
+            selectedContact: 0,
 
-        },
-        created: function() {
-            updateScroll();
         },
         methods: {
             selectAvatar: function(index) {
@@ -184,6 +182,23 @@ new Vue (
             selectAlt: function(index) {
                 return `Avatar ${this.contacts[index].name}`;
             },
+            messagePosition: function(chat, index) {
+                if (this.contacts[chat].messages[index].status === "sent") {
+                    return "mine-position";
+                } else {
+                    return "yours-position";
+                }
+            },
+            messageColor: function(chat, index) {
+                if (this.contacts[chat].messages[index].status === "sent") {
+                    return "mine-color";
+                } else {
+                    return "yours-color";
+                }
+            },
+            contactSelection: function(index) {
+                return selectedContact = index;
+            }
         }
     }
 );
