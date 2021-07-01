@@ -67,13 +67,15 @@
                     <div class="row">
                         <div class="top-bar d-flex justify-content-between align-items-center">
                             <div class="d-flex align-items-center">
-                                <img class="avatar" src="./img/avatar_1.jpg" alt="">
-                                
-                                <div class="contact-info">
-                                    <h6>Michele</h6>
+                                <!-- <div :class="displayClass"> -->
+                                    <img class="avatar" src="./img/avatar_1.jpg" alt="">
                                     
-                                    <div>Ultimo accesso oggi alle</div>
-                                </div>
+                                    <div class="contact-info">
+                                        <h6>Michele</h6>
+                                        
+                                        <div>Ultimo accesso oggi alle</div>
+                                    </div>
+                                <!-- </div> -->
                             </div>
 
                             <div>
@@ -83,26 +85,33 @@
                             </div>
                         </div>
                         
-                        <div class="message-area">
-                            <div v-for="(message, index) in contacts[selectedContact].messages" class="text-box" :class="messagePosition(selectedContact, index)">
-                                <div class="text-message" :class="messageColor(selectedContact, index)">
-                                    <div class="text-container d-flex justify-content-start">
-                                        <div class="text">{{message.text}}</div>
-                                    </div>
-
-                                    <div class="date-container d-flex justify-content-end">
-                                        <div class="date">{{message.date}}</div>
+                        <div class="message-area" :class="heightClass">
+                            <div :class="displayClass">
+                                <div v-for="(message, index) in contacts[selectedContact].messages" class="text-box" :class="messagePosition(selectedContact, index)">
+                                    <div class="text-message" :class="messageColor(selectedContact, index)">
+                                        <div class="text-container d-flex justify-content-start">
+                                            <div class="text">{{message.text}}</div>
+                                        </div>
+                                        
+                                        <div class="date-container d-flex justify-content-end">
+                                            <div class="date">{{message.date}}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="input-section d-flex justify-content-between align-items-center">
-                            <i class="far fa-smile"></i>
+                        <div class="input-section d-flex justify-content-between align-items-center" :class="displayClass">
+                            <div class="icon-container">
+                                <i class="far fa-smile"></i>
+                            </div>
 
-                            <input type="text" placeholder="Scrivi un messaggio">
+                            <input v-model="newText" type="text" placeholder="Scrivi un messaggio">
                             
-                            <i class="fas fa-microphone"></i>
+                            <div class="icon-container d-flex justify-content-center">
+                                <i v-if="newText === ''" class="fas fa-microphone"></i>
+                                <i v-else="newText !== ''" class="fas fa-chevron-circle-right" @click="sendMessage()"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

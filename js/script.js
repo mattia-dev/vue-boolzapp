@@ -173,7 +173,13 @@ new Vue (
                 },
             ],
             selectedContact: 0,
-
+            displayClass: "",
+            heightClass: "",
+            newText: "",
+        },
+        created: function() {
+            this.displayClass = "d-none";
+            this.heightClass = "without-text"
         },
         methods: {
             selectAvatar: function(index) {
@@ -198,7 +204,19 @@ new Vue (
             },
             contactSelection: function(index) {
                 this.selectedContact = index;
-            }
+                this.displayClass = "";
+                this.heightClass = "with-text"
+            },
+            sendMessage: function() {
+                this.contacts[this.selectedContact].messages.push(
+                {
+                        date: '10/01/2020 15:50:00',
+                        text: this.newText,
+                        status: 'sent'
+                }
+                );
+                this.newText = "";
+            },
         }
     }
 );

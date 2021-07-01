@@ -177,11 +177,18 @@ input:focus {
 }
 
 .message-area {
-    height: calc(100% - 140px);
     background-image: url('../img/mine.jpg');
     background-repeat: repeat;
     overflow-y: auto;
     padding: 12px 36px;
+}
+
+.without-text {
+    height: calc(100% - 70px);
+}
+
+.with-text {
+    height: calc(100% - 140px);
 }
 
 .text-box {
@@ -204,6 +211,10 @@ input:focus {
     height: 70px;
     background-color: #f2eeea;
     padding: 0;
+}
+
+.input-section .icon-container {
+    min-width: 72px;
 }
 
 .input-section i {
