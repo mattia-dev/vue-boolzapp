@@ -197,7 +197,7 @@ new Vue (
                 }
             },
             contactSelection: function(index) {
-                return selectedContact = index;
+                this.selectedContact = index;
             }
         }
     }
