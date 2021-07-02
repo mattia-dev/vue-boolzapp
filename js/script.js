@@ -173,13 +173,11 @@ new Vue (
                 },
             ],
             selectedContact: 0,
-            displayClass: "",
-            heightClass: "",
+            displayContent: "d-none",
+            hideContent: "",
+            heightClass: "without-text",
             newText: "",
-        },
-        created: function() {
-            this.displayClass = "d-none";
-            this.heightClass = "without-text"
+            searchUser: "",
         },
         methods: {
             getDatetime: function() {
@@ -207,7 +205,8 @@ new Vue (
             },
             contactSelection: function(index) {
                 this.selectedContact = index;
-                this.displayClass = "";
+                this.displayContent = "";
+                this.hideContent = "d-none";
                 this.heightClass = "with-text";
             },
             sendMessage: function() {
@@ -233,6 +232,13 @@ new Vue (
                 let textInputElement = document.querySelector('#text-input');
                 textInputElement.focus();
             },
+            lastMessageSender: function() {
+                for (let i = this.contacts[this.selectedContact].messages.length - 1; i >= 0; i--) {
+                    if (this.contacts[this.selectedContact].messages[i].status === "received") {
+                        return this.contacts[this.selectedContact].messages.length - i;
+                    } 
+                }
+            }
         }
     }
 );

@@ -25,11 +25,11 @@ h5 {
     font-size: 18px;
 }
 
-i:not(.search-area i) {
+i:not(.search-area i, .boolzapp-container i) {
     font-size: 24px;
 }
 
-.chat-list li, .top-bar i, .input-section i {
+.chat-list li, .top-bar i:not(.boolzapp-container i), .input-section i {
     cursor: pointer;
 }
 
@@ -124,6 +124,7 @@ input:focus {
 .search-area {
     height: 50px;
     background-color: #fafafa;
+    padding-right: 16px;
 }
 
 .search-bar {
@@ -138,7 +139,7 @@ input:focus {
 }
 
 .search-bar input {
-    height: 34px;
+    height: 32px;
     margin: 0 12px 0 36px;
     font-size: 13px;
 }
@@ -152,13 +153,14 @@ input:focus {
 
 .chat-list ul {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
     margin-bottom: 0;
 }
 
 .chat-list li {
     background-color: white;
     padding: 12px 0;
+    border-right: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
     transition: background-color .2s;
 }
@@ -174,6 +176,21 @@ input:focus {
 .chat-list .avatar {
     width: 70px;
     margin-right: 24px;
+}
+
+.boolzapp-container {
+    width: 100%;
+}
+
+.boolzapp-container i, .boolzapp-text {
+    font-size: 32px;
+    color: #429488;
+}
+
+.boolzapp-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    margin-right: 12px;
 }
 
 .message-area {
