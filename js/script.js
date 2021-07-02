@@ -182,6 +182,9 @@ new Vue (
             this.heightClass = "without-text"
         },
         methods: {
+            getDatetime: function() {
+                return dayjs().format('DD/MM/YYYY HH:mm:ss')
+            },
             selectAvatar: function(index) {
                 return `img/avatar${this.contacts[index].avatar}.jpg`;
             },
@@ -210,7 +213,7 @@ new Vue (
             sendMessage: function() {
                 this.contacts[this.selectedContact].messages.push(
                     {
-                        date: '10/01/2020 15:50:00',
+                        date: this.getDatetime(),
                         text: this.newText,
                         status: 'sent'
                     }
@@ -218,7 +221,7 @@ new Vue (
                 setTimeout( () => 
                     this.contacts[this.selectedContact].messages.push(
                         {
-                            date: '10/01/2020 15:50:00',
+                            date: this.getDatetime(),
                             text: 'ok',
                             status: 'received'
                         }
