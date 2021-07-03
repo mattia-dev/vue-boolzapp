@@ -25,7 +25,7 @@ h5 {
     font-size: 18px;
 }
 
-i:not(.search-area i, .boolzapp-container i) {
+i:not(.search-area i, .boolzapp-container i, .alert-container i) {
     font-size: 24px;
 }
 
@@ -176,6 +176,15 @@ input:focus {
 .chat-list .avatar {
     width: 70px;
     margin-right: 24px;
+}
+
+.alert-container {
+    width: 100%;
+    height: 100%;
+    font-size: 32px;
+    font-weight: 700;
+    color: #429488;
+    text-align: center;
 }
 
 .boolzapp-container {

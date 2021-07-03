@@ -172,12 +172,20 @@ new Vue (
                     ],
                 },
             ],
-            selectedContact: 0,
+            selectedContactIndex: 0,
             displayContent: "d-none",
             hideContent: "",
             heightClass: "without-text",
             newText: "",
             searchUser: "",
+            alert: "d-none",
+        },
+        mounted() {
+            this.scrollToEnd();
+            this.searchFilter();
+        },
+        updated() {
+            this.scrollToEnd();
         },
         methods: {
             getDatetime: function() {
@@ -189,28 +197,46 @@ new Vue (
             selectAlt: function(index) {
                 return `Avatar ${this.contacts[index].name}`;
             },
-            messagePosition: function(chat, index) {
-                if (this.contacts[chat].messages[index].status === "sent") {
+            messagePosition: function(message) {
+                if (message.status === "sent") {
                     return "mine-position";
                 } else {
                     return "yours-position";
                 }
             },
-            messageColor: function(chat, index) {
-                if (this.contacts[chat].messages[index].status === "sent") {
+            messageColor: function(message) {
+                if (message.status === "sent") {
                     return "mine-color";
                 } else {
                     return "yours-color";
                 }
             },
+            // messageSpacing: function(chat, message, index) {
+                // if (this.contacts[chat].messages[index - 1] >= 0) {
+                //     if (this.contacts[chat].messages[index].status === this.contacts[chat].messages[index - 1].status) {
+                //         return "smaller-spacing";
+                //     } else {
+                //         return "bigger-spacing";
+                //     }
+                // }
+                // if (message.status !== this.contacts[chat].messages[index - 1].status) {
+                //     return "bigger-spacing";
+                // }
+                //     if (message.status === "sent") {
+                //         return "smaller-spacing";
+                //     } else {
+                //         return "bigger-spacing";
+                //     }
+                // }
+            // },
             contactSelection: function(index) {
-                this.selectedContact = index;
+                this.selectedContactIndex = index;
                 this.displayContent = "";
                 this.hideContent = "d-none";
                 this.heightClass = "with-text";
             },
             sendMessage: function() {
-                this.contacts[this.selectedContact].messages.push(
+                this.contacts[this.selectedContactIndex].messages.push(
                     {
                         date: this.getDatetime(),
                         text: this.newText,
@@ -218,27 +244,42 @@ new Vue (
                     }
                 );
                 setTimeout( () => 
-                    this.contacts[this.selectedContact].messages.push(
+                    this.contacts[this.selectedContactIndex].messages.push(
                         {
                             date: this.getDatetime(),
                             text: 'ok',
                             status: 'received'
                         }
                     ),
-                1000);
+                5000);
 
                 this.newText = "";
                 
                 let textInputElement = document.querySelector('#text-input');
                 textInputElement.focus();
             },
-            lastMessageSender: function() {
-                for (let i = this.contacts[this.selectedContact].messages.length - 1; i >= 0; i--) {
-                    if (this.contacts[this.selectedContact].messages[i].status === "received") {
-                        return this.contacts[this.selectedContact].messages.length - i;
+            lastReceivedMessageIndex: function() {
+                for (let i = this.contacts[this.selectedContactIndex].messages.length - 1; i >= 0; i--) {
+                    if (this.contacts[this.selectedContactIndex].messages[i].status === "received") {
+                        return i;
                     } 
                 }
-            }
-        }
+            },
+            searchFilter: function () {
+                if (this.searchUser.length > 0) {
+                    let filteredContacts = this.contacts.filter(contact => contact.name.includes(this.searchUser));
+                    if (filteredContacts.length == 0) {
+                        this.alert = "";
+                    }
+                    return filteredContacts;
+                } else {
+                    return this.contacts;
+                }
+            },
+            scrollToEnd() {
+                let content = this.$refs.container;
+                content.scrollTop = content.scrollHeight;
+            },
+        },
     }
 );
