@@ -197,38 +197,34 @@ new Vue (
             selectAlt: function(index) {
                 return `Avatar ${this.contacts[index].name}`;
             },
-            messagePosition: function(message) {
-                if (message.status === "sent") {
-                    return "mine-position";
-                } else {
-                    return "yours-position";
+            previousMessageStatus: function (messageIndex) {
+                if (messageIndex > 0) {
+                    return this.contacts[this.selectedContactIndex].messages[messageIndex - 1].status;
                 }
             },
-            messageColor: function(message) {
-                if (message.status === "sent") {
-                    return "mine-color";
+            messagePosition: function (message, index) {
+                if (message.status === this.previousMessageStatus(index)) {
+                    return `${message.status} smaller-spacing`;
                 } else {
-                    return "yours-color";
+                    return `${message.status} bigger-spacing`;
                 }
             },
-            // messageSpacing: function(chat, message, index) {
-                // if (this.contacts[chat].messages[index - 1] >= 0) {
-                //     if (this.contacts[chat].messages[index].status === this.contacts[chat].messages[index - 1].status) {
-                //         return "smaller-spacing";
-                //     } else {
-                //         return "bigger-spacing";
-                //     }
-                // }
-                // if (message.status !== this.contacts[chat].messages[index - 1].status) {
-                //     return "bigger-spacing";
-                // }
-                //     if (message.status === "sent") {
-                //         return "smaller-spacing";
-                //     } else {
-                //         return "bigger-spacing";
-                //     }
-                // }
-            // },
+            messageCorner: function(message, index) {
+                if (message.status !== this.previousMessageStatus(index)) {
+                    if (message.status === "sent") {
+                        return "triangle-up-right";
+                    } else {
+                        return "triangle-up-left";
+                    }
+                }
+            },
+            messageStyle: function(message, index) {
+                if (message.status !== this.previousMessageStatus(index)) {
+                    return `${message.status}-color modified-border-radius-${message.status}`;
+                } else {
+                    return `${message.status}-color ${message.status}-margin `;
+                }
+            },
             contactSelection: function(index) {
                 this.selectedContactIndex = index;
                 this.displayContent = "";
@@ -236,13 +232,15 @@ new Vue (
                 this.heightClass = "with-text";
             },
             sendMessage: function() {
-                this.contacts[this.selectedContactIndex].messages.push(
-                    {
-                        date: this.getDatetime(),
-                        text: this.newText,
-                        status: 'sent'
-                    }
-                );
+                if (this.newText.length > 0) {
+                    this.contacts[this.selectedContactIndex].messages.push(
+                        {
+                            date: this.getDatetime(),
+                            text: this.newText,
+                            status: 'sent'
+                        }
+                    );
+                }
                 setTimeout( () => 
                     this.contacts[this.selectedContactIndex].messages.push(
                         {
@@ -251,7 +249,7 @@ new Vue (
                             status: 'received'
                         }
                     ),
-                5000);
+                50000);
 
                 this.newText = "";
                 
@@ -276,7 +274,7 @@ new Vue (
                     return this.contacts;
                 }
             },
-            scrollToEnd() {
+            scrollToEnd: function() {
                 let content = this.$refs.container;
                 content.scrollTop = content.scrollHeight;
             },

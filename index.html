@@ -60,7 +60,11 @@
                                 <li v-for="(img, index) in searchFilter()" class="d-flex" @click="contactSelection(index)">
                                     <img class="avatar" :src="selectAvatar(index)" :alt="selectAlt(index)">
                                     
-                                    <h5>{{img.name}}</h5>
+                                    <div class="chat-info">
+                                        <h5>{{img.name}}</h5>
+
+                                        <div class="last-message">{{img.messages[(img.messages.length - 1)].text}}</div>
+                                    </div>
                                 </li>
                             </ul>
 
@@ -103,8 +107,10 @@
                         
                         <div class="message-area" :class="heightClass" ref="container">
                             <div :class="displayContent">
-                                <div v-for="(message, index) in contacts[selectedContactIndex].messages" class="text-box" :class="messagePosition(message)">
-                                    <div class="text-message" :class="messageColor(message)">
+                                <div v-for="(message, index) in contacts[selectedContactIndex].messages" class="text-box" :class="messagePosition(message, index)">
+                                    <div :class="messageCorner(message, index)"></div>
+
+                                    <div class="text-message" :class="messageStyle(message, index)">
                                         <div class="text-container d-flex justify-content-start">
                                             <div class="text">{{message.text}}</div>
                                         </div>
@@ -113,6 +119,8 @@
                                             <div class="date">{{message.date}}</div>
                                         </div>
                                     </div>
+
+                                    <div :class="messageCorner(message, index)"></div>
                                 </div>
                             </div>
                         </div>

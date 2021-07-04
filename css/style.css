@@ -52,21 +52,67 @@ input:focus {
     outline: none;
 }
 
-.mine-position {
+.sent {
     display: flex;
     justify-content: flex-end;
 }
 
-.yours-position {
+.received {
     display: flex;
     justify-content: flex-start;
 }
 
-.mine-color {
+.bigger-spacing {
+    margin-top: 40px;
+}
+
+.smaller-spacing {
+    margin-top: 5px;
+}
+
+.triangle-up-right {
+    width: 0;
+    height: 0;
+    border-top: 12px solid #dcf8c0;
+    border-right: 12px solid transparent;
+}
+
+.triangle-up-right:first-child {
+    display: none;
+}
+
+.triangle-up-left {
+    width: 0;
+    height: 0;
+    border-top: 12px solid white;
+    border-left: 12px solid transparent;
+}
+
+.triangle-up-left:last-child {
+    display: none;
+}
+
+.text-message.modified-border-radius-sent {
+    border-top-right-radius: 0;
+}
+
+.text-message.modified-border-radius-received {
+    border-top-left-radius: 0;
+}
+
+.sent-margin {
+    margin-right: 12px;
+}
+
+.received-margin {
+    margin-left: 12px;
+}
+
+.sent-color {
     background-color: #dcf8c0;
 }
 
-.yours-color {
+.received-color {
     background-color: white;
 }
 
@@ -158,6 +204,7 @@ input:focus {
 }
 
 .chat-list li {
+    height: 95px;
     background-color: white;
     padding: 12px 0;
     border-right: 1px solid #ececec;
@@ -176,6 +223,16 @@ input:focus {
 .chat-list .avatar {
     width: 70px;
     margin-right: 24px;
+}
+
+.chat-info {
+    overflow: hidden;
+}
+
+.last-message {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .alert-container {
@@ -217,15 +274,16 @@ input:focus {
     height: calc(100% - 140px);
 }
 
-.text-box {
-    margin-top: 12px;
-}
-
 .text-message {
     min-width: 40%;
     max-width: 60%;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 10px;
+}
+
+.text {
+    width: 100%;
+    overflow-wrap: break-word;
 }
 
 .date {
