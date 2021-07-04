@@ -21,7 +21,7 @@ new Vue (
                             status: 'sent'
                         },
                         {
-                            date: '10/01/2020 16:15:22',
+                            date: '03/07/2021 16:15:22',
                             text: 'Tutto fatto!',
                             status: 'received'
                         }
@@ -43,7 +43,7 @@ new Vue (
                             status: 'received'
                         },
                         {
-                            date: '20/03/2020 16:35:00',
+                            date: '04/07/2021 16:35:00',
                             text: 'Mi piacerebbe ma devo andare a fare la spesa.',
                             status: 'sent'
                         }
@@ -179,6 +179,7 @@ new Vue (
             newText: "",
             searchUser: "",
             alert: "d-none",
+            messageToDeleteIndex: "",
         },
         mounted() {
             this.scrollToEnd();
@@ -190,6 +191,12 @@ new Vue (
         methods: {
             getDatetime: function() {
                 return dayjs().format('DD/MM/YYYY HH:mm:ss')
+            },
+            getDate: function (dateTime) {
+                return dateTime.slice(0, 10);
+            },
+            getTime: function (dateTime) {
+                return dateTime.slice(11);
             },
             selectAvatar: function(index) {
                 return `img/avatar${this.contacts[index].avatar}.jpg`;
@@ -256,6 +263,32 @@ new Vue (
                 let textInputElement = document.querySelector('#text-input');
                 textInputElement.focus();
             },
+            deleteMessage: function(index) {
+                messageToDeleteIndex = index;
+            },
+            messageFilter: function() {
+                if (this.messageToDeleteIndex !== "") {
+
+                    return filteredMessages = this.contacts[this.selectedContactIndex].messages.splice(this.messageToDeleteIndex, 1);
+                    
+                   
+                } else {
+                    return this.contacts[this.selectedContactIndex].messages;
+                }
+            },
+            // messageFilter: function(index) {
+                // this.contacts[this.selectedContactIndex].messages.splice(index, 1);
+                // if (this.searchUser.length > 0) {
+                    // let filteredMessages = this.contacts[this.selectedContactIndex].messages.splice(index, 1);
+                    // if (filteredMessages.length == 0) {
+                    //     this.alert = "";
+                    // }
+                // return this.contacts[this.selectedContactIndex].messages.splice(index, 1);
+                
+                // } else {
+                //     return this.contacts;
+                // }
+            // },
             lastReceivedMessageIndex: function() {
                 for (let i = this.contacts[this.selectedContactIndex].messages.length - 1; i >= 0; i--) {
                     if (this.contacts[this.selectedContactIndex].messages[i].status === "received") {
@@ -277,6 +310,15 @@ new Vue (
             scrollToEnd: function() {
                 let content = this.$refs.container;
                 content.scrollTop = content.scrollHeight;
+            },
+            lastMessageDateTime: function(lastMessage) {
+                if (this.getDate(lastMessage.date) == dayjs().format('DD/MM/YYYY')) {
+                    return `today at ${this.getTime(lastMessage.date)}`;
+                } else if (this.getDate(lastMessage.date) == dayjs().subtract(1, 'day').format('DD/MM/YYYY')) {
+                    return `yesterday at ${this.getTime(lastMessage.date)}`;
+                } else {
+                    return `${this.getDate(lastMessage.date)} at ${this.getTime(lastMessage.date)}`;
+                }
             },
         },
     }

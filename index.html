@@ -60,10 +60,15 @@
                                 <li v-for="(img, index) in searchFilter()" class="d-flex" @click="contactSelection(index)">
                                     <img class="avatar" :src="selectAvatar(index)" :alt="selectAlt(index)">
                                     
+                                    
                                     <div class="chat-info">
                                         <h5>{{img.name}}</h5>
 
-                                        <div class="last-message">{{img.messages[(img.messages.length - 1)].text}}</div>
+                                        <div class="last-message-container">
+                                            <div class="last-message">{{img.messages[(img.messages.length - 1)].text}}</div>
+                                            
+                                            <div class="last-message-date">{{lastMessageDateTime(img.messages[(img.messages.length - 1)])}}</div>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
@@ -107,12 +112,21 @@
                         
                         <div class="message-area" :class="heightClass" ref="container">
                             <div :class="displayContent">
-                                <div v-for="(message, index) in contacts[selectedContactIndex].messages" class="text-box" :class="messagePosition(message, index)">
+                                <div v-for="(message, index) in messageFilter()" class="text-box" :class="messagePosition(message, index)">
                                     <div :class="messageCorner(message, index)"></div>
 
                                     <div class="text-message" :class="messageStyle(message, index)">
-                                        <div class="text-container d-flex justify-content-start">
+                                        <div class="text-container d-flex justify-content-between">
                                             <div class="text">{{message.text}}</div>
+
+                                            <div class="dropend">
+                                                <i class="fas fa-angle-down" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                                
+                                                <ul class="dropdown-menu">
+                                                    <li><button class="dropdown-item" type="button">Copia</button></li>
+                                                    <li><button class="dropdown-item" type="button" @click="deleteMessage(index)">Elimina</button></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                         
                                         <div class="date-container d-flex justify-content-end">
@@ -143,6 +157,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>
