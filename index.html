@@ -112,7 +112,7 @@
                         
                         <div class="message-area" :class="heightClass" ref="container">
                             <div :class="displayContent">
-                                <div v-for="(message, index) in messageFilter()" class="text-box" :class="messagePosition(message, index)">
+                                <div v-for="(message, index) in contacts[selectedContactIndex].messages" class="text-box" :class="messagePosition(message, index)">
                                     <div :class="messageCorner(message, index)"></div>
 
                                     <div class="text-message" :class="messageStyle(message, index)">
@@ -124,7 +124,7 @@
                                                 
                                                 <ul class="dropdown-menu">
                                                     <li><button class="dropdown-item" type="button">Copia</button></li>
-                                                    <li><button class="dropdown-item" type="button" @click="deleteMessage(index)">Elimina</button></li>
+                                                    <li><button class="dropdown-item" type="button">Elimina</button></li>
                                                 </ul>
                                             </div>
                                         </div>

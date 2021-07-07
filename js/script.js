@@ -180,13 +180,16 @@ new Vue (
             searchUser: "",
             alert: "d-none",
             messageToDeleteIndex: "",
+            filteredMessages: null
         },
         mounted() {
             this.scrollToEnd();
+            // this.messageFilter();
             this.searchFilter();
         },
         updated() {
             this.scrollToEnd();
+            // this.messageFilter();
         },
         methods: {
             getDatetime: function() {
@@ -263,31 +266,17 @@ new Vue (
                 let textInputElement = document.querySelector('#text-input');
                 textInputElement.focus();
             },
-            deleteMessage: function(index) {
-                messageToDeleteIndex = index;
-            },
-            messageFilter: function() {
-                if (this.messageToDeleteIndex !== "") {
-
-                    return filteredMessages = this.contacts[this.selectedContactIndex].messages.splice(this.messageToDeleteIndex, 1);
-                    
-                   
-                } else {
-                    return this.contacts[this.selectedContactIndex].messages;
-                }
-            },
-            // messageFilter: function(index) {
-                // this.contacts[this.selectedContactIndex].messages.splice(index, 1);
-                // if (this.searchUser.length > 0) {
-                    // let filteredMessages = this.contacts[this.selectedContactIndex].messages.splice(index, 1);
-                    // if (filteredMessages.length == 0) {
-                    //     this.alert = "";
-                    // }
-                // return this.contacts[this.selectedContactIndex].messages.splice(index, 1);
-                
-                // } else {
-                //     return this.contacts;
-                // }
+            // deleteMessage: function(index) {
+            //     this.filteredMessages.splice(index, 1);
+            //     this.messageToDeleteIndex = index;
+            //     this.messageFilter();
+            // },
+            // messageFilter: function() {
+            //     if (this.messageToDeleteIndex.length > 0) {
+            //         this.filteredMessages = this.contacts[this.selectedContactIndex].messages.splice(this.messageToDeleteIndex, 1)
+            //     } else {
+            //         this.filteredMessages = this.contacts[this.selectedContactIndex].messages;
+            //     }
             // },
             lastReceivedMessageIndex: function() {
                 for (let i = this.contacts[this.selectedContactIndex].messages.length - 1; i >= 0; i--) {
